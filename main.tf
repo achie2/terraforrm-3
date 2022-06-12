@@ -1,8 +1,7 @@
 # Creating networking for the project
 
-
 resource "aws_vpc" "prod-rock-vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.cidr_block
   instance_tenancy     = "default"
   enable_dns_hostnames = true
   tags = {
@@ -13,11 +12,10 @@ resource "aws_vpc" "prod-rock-vpc" {
 
 # Public Subnet 1 
 
-
 resource "aws_subnet" "Test-public-sub1" {
   vpc_id            = aws_vpc.prod-rock-vpc.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "eu-west-2a"
+  cidr_block        = var.public1-cidr
+  availability_zone = var.az1
 
 
 
@@ -32,8 +30,8 @@ resource "aws_subnet" "Test-public-sub1" {
 
 resource "aws_subnet" "Test-public-sub2" {
   vpc_id            = aws_vpc.prod-rock-vpc.id
-  cidr_block        = "10.0.2.0/24"
-  availability_zone = "eu-west-2b"
+  cidr_block        = var.public2-cidr
+  availability_zone = var.az2
 
 
 
@@ -47,12 +45,10 @@ resource "aws_subnet" "Test-public-sub2" {
 
 # Private Subnet 1
 
-
 resource "aws_subnet" "Test-priv-sub1" {
   vpc_id            = aws_vpc.prod-rock-vpc.id
-  cidr_block        = "10.0.3.0/24"
-  availability_zone = "eu-west-2a"
-
+  cidr_block        = var.private1-cidr
+  availability_zone = var.az1
 
 
   tags = {
@@ -66,8 +62,8 @@ resource "aws_subnet" "Test-priv-sub1" {
 
 resource "aws_subnet" "Test-priv-sub2" {
   vpc_id            = aws_vpc.prod-rock-vpc.id
-  cidr_block        = "10.0.4.0/24"
-  availability_zone = "eu-west-2b"
+  cidr_block        = var.private2-cidr
+  availability_zone = var.az2
 
 
 
