@@ -8,7 +8,6 @@ variable "public1-cidr" {
   type        = string
   description = "name of public subnet 1 cidr"
   default     = "10.0.1.0/24"
-
 }
 
 variable "public2-cidr" {
@@ -36,7 +35,6 @@ variable "az1" {
   type        = string
   description = "name of availability zone"
   default     = "eu-west-2a"
-
 }
 
 
